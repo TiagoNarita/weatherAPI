@@ -1,12 +1,12 @@
 package personal.weatherAPI.controllers.dtos;
 
 public record WeatherOut(
-        String id,
-        int tempMax,
-        int tempMin,
-        int temp,
-        int feelsLike,
-        int precipitationProbability,
+        String datetime,
+        double tempmax,
+        double tempmin,
+        double temp,
+        double feelslike,
+        int precipprob,
         String conditions,
         String icon
 ) {

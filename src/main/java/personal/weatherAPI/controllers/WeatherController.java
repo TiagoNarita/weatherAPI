@@ -1,6 +1,7 @@
 package personal.weatherAPI.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,10 +12,10 @@ import personal.weatherAPI.controllers.dtos.WeatherOut;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/wheather")
+@RequestMapping("/weather")
 public class WeatherController {
 
-    WeatherService weatherService;
+    private final WeatherService weatherService;
 
     @GetMapping("/{country}")
     public ResponseEntity<WeatherOut> getWeather(@PathVariable String country) {
