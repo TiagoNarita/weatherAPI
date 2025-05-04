@@ -3,6 +3,7 @@ package personal.weatherAPI.business.services;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import personal.weatherAPI.controllers.dtos.WeatherOut;
@@ -21,6 +22,7 @@ public class WeatherService {
         this.restTemplate = restTemplate;
     }
 
+    @Cacheable(value = "weather", key = "#country", unless = "#result == null")
     public WeatherOut getWeather(String country) {
         try {
             return getWeatherOut(country);
